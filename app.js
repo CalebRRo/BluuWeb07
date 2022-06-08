@@ -1,45 +1,26 @@
 const lista = document.querySelector("#lista");
+const fragment = document.createDocumentFragment()
+const liTemplate = document.querySelector("#liTemplate")
 
 const arrayPaises = ["Peru", "Mexico", "Colombia"]
 
-const fragment = document.createDocumentFragment()
+arrayPaises.forEach(pais => {
 
-//<li class="list">
-               // <b>Pais:</b>
-                //<span class="text-primary">Aqui va el pais</span>
-           // </li>
-let template = "";
+    const clone = liTemplate.content.cloneNode(true)
+    clone.querySelector("span").textContent = pais
 
-arrayPaises.forEach((pais) => {
-template += 
- `<li class="list">
-     <b>Pais:</b>
-     <span class="text-primary">${pais}</span>
-  </li>`;
-}); 
+    fragment.appendChild(clone);
+})
 
-lista.innerHTML = template;
+lista.appendChild(fragment)
 
-/* arrayPaises.forEach((pasi) => {
 
-    const li = document.createElement("li")
-    li.className = "list"
 
-    const b = document.createElement("b")
-    b.textContent = "Pais:"
+//const clone = liTemplate.content.cloneNode(true)
 
-    const span = document.createElement("span")
-    span.className = "text-primary"
-    span,textContent = pais
+//clone.querySelector(".text-primary").textContent = "agregué a través de un template";
 
-    li.appendChild(b)
-    li.appendChild(span)
-
-    fragment.appendChild(li)
-
-}) */
-
-//lista.appendChild(fragment)
+//lista.appendChild(clone);
 
 
 
